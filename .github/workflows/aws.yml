@@ -11,8 +11,8 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - run: npm test:unit
-      - run: npm build
+      - run: npm run test:unit
+      - run: npm run build
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}

@@ -1,6 +1,9 @@
 name: Ship to S3
 
-on: [ push ]
+on: 
+  push:
+    branches:
+      - release
 
 jobs:
   upload:

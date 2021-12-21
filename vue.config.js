@@ -111,7 +111,7 @@ module.exports = {
 
 	// publicPath: process.env.APP_ENV === 'production' ? 'http://127.0.0.1:5000/' : '/',
 
-	outputDir: `dist/versions/${versionNumber}/`,
+	outputDir: `dist/releases/v${versionNumber}/`,
 
 	filenameHashing: false,
 };

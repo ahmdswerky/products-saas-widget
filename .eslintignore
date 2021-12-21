@@ -1,0 +1,5 @@
+dist
+tests
+integration-code
+shims-vue.d.ts
+vue3-webcomponent-wrapper.d.ts

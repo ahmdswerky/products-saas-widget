@@ -1,30 +1,57 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+	<!--<div id="nav">
+		<RouterLink to="/">Home</RouterLink> |
+		<RouterLink to="/about">About</RouterLink>
+	</div>-->
+
+	<div class="relative">
+		<MainNavbar />
+
+		<RouterView />
+	</div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { defineComponent, onBeforeMount, PropType } from 'vue';
+import { useStore } from 'vuex';
+import MainNavbar from '@/components/shared/MainNavbar.vue';
+import { Display } from '@/types/widget';
 
-#nav {
-  padding: 30px;
+const w: any = window;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+export default defineComponent({
+	name: 'App',
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+	components: {
+		MainNavbar,
+	},
+
+	props: {
+		clientId: {
+			type: String,
+			required: false,
+			default: () => w.ljkbamkwa,
+		},
+		display: {
+			// type: String as PropType<Display>,
+			type: String,
+			default: '4x3',
+			// validator(value: string) {
+			//	return ['6x2', '4x3', '4x2', '3x4'].includes(value);
+			// },
+		},
+		item: {
+			type: String,
+			required: false,
+		},
+	},
+
+	setup(props) {
+		onBeforeMount(() => {
+			const { commit } = useStore();
+			commit('keys/setApiKey', props.clientId);
+			commit('display/setDisplay', props.display);
+		});
+	},
+});
+</script>

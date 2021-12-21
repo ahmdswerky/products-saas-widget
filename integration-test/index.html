@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Products and whatnot</title>
+
+	<script>
+		const baseURL='https://products-list.test',scriptId='google-script',script=document['createElement']('script');script['src']=baseURL+'/products-list.js',script['id']=scriptId,document['head']['append'](script),window['C']={'loaded':![],'F':()=>{const i=new Event('products-list:loaded');window['dispatchEvent'](i);}},script['onload']=()=>{window['C']['loaded']=!![],window['C']['F']();};
+	</script>
+</head>
+<body>
+	
+	<simple-products-list client-id="SULaWEQxzBv4UKC" item="gryphon-and-alice" />
+	
+	<!--<script src="https://products-list.test/products-list.js"></script>-->
+</body>
+</html>

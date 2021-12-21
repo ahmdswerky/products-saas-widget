@@ -2,18 +2,21 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
+		"resolveJsonModule": true,
     "esModuleInterop": true,
+		"allowJs": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "jest"
+      "jest",
+			"cypress"
     ],
     "paths": {
       "@/*": [
@@ -33,7 +36,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "tests/e2e/specs/auth.js", "tests/e2e/specs/test.js"  ],
   "exclude": [
     "node_modules"
   ]

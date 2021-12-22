@@ -1,11 +1,11 @@
 {
   "name": "widget-fix",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "private": true,
-	"author": {
-		"name": "Ahmed Swerky",
-		"email": "ahmdswerky@gmail.com"
-	},
+  "author": {
+    "name": "Ahmed Swerky",
+    "email": "ahmdswerky@gmail.com"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production && integration-code/node_modules/webpack-cli/bin/cli.js --config integration-code/webpack.prod.js",
@@ -72,7 +72,7 @@
     "vue-jest": "^5.0.0-0",
     "vue-remove-attributes": "^1.0.3"
   },
-	"lint-staged": {
+  "lint-staged": {
     "*": "yarn run lint:fix"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "widget-fix",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": true,
   "author": {
     "name": "Ahmed Swerky",
@@ -8,9 +8,9 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --mode production && integration-code/node_modules/webpack-cli/bin/cli.js --config integration-code/webpack.prod.js",
-    "postbuild": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION",
+    "build": "vue-cli-service build --mode production",
     "build:integration": "integration-code/node_modules/webpack-cli/bin/cli.js --config integration-code/webpack.prod.js",
+    "postbuild": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",

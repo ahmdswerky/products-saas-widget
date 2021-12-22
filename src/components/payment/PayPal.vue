@@ -157,7 +157,6 @@ export default defineComponent({
 							},
 							onApprove(info, actions) {
 								paying.value = true;
-								console.log(info, actions);
 
 								updatePayment(payment.id, 'paypal', paymentId).then(res => {
 									paying.value = false;

@@ -165,16 +165,12 @@ export default defineComponent({
 						product_id: props.productId,
 						amount: 105,
 						method: 'credit_card',
-					})
-						.then(({ data }) => {
-							payment = data.payment;
-							clientSecret = data.client_secret;
-							paymentId = data.payment_id;
-							createCardElement();
-						})
-						.catch(error => {
-							console.log(error);
-						});
+					}).then(({ data }) => {
+						payment = data.payment;
+						clientSecret = data.client_secret;
+						paymentId = data.payment_id;
+						createCardElement();
+					});
 				});
 
 			// createPayment({
@@ -195,41 +191,34 @@ export default defineComponent({
 					card,
 				})
 				.then(({ paymentMethod }) => {
-					attachPaymentMethod('credit_card', paymentMethod.id)
-						.then(({ data }) => {
-							console.log(data);
-						})
-						.then(() => {
-							stripe.createToken(card).then(response => {
-								const { error, token } = response;
-								// alert(JSON.stringify(token));
-								if (error) {
-									// alert(JSON.stringify(error));
-								} else {
-									createCard('credit_card', token.id).then(() => {
-										stripe
-											.confirmCardPayment(clientSecret, {
-												payment_method: {
-													card,
-												},
-											})
-											.then(() => {
-												updatePayment(payment.id, 'paypal', paymentId).then(res => {
-													paying.value = false;
-													payed.value = true;
+					attachPaymentMethod('credit_card', paymentMethod.id).then(() => {
+						stripe.createToken(card).then(response => {
+							const { error, token } = response;
+							// alert(JSON.stringify(token));
+							if (error) {
+								// alert(JSON.stringify(error));
+							} else {
+								createCard('credit_card', token.id).then(() => {
+									stripe
+										.confirmCardPayment(clientSecret, {
+											payment_method: {
+												card,
+											},
+										})
+										.then(() => {
+											updatePayment(payment.id, 'paypal', paymentId).then(res => {
+												paying.value = false;
+												payed.value = true;
 
-													setTimeout(() => {
-														emitter.emit('payment:finished');
-													}, 500);
-												});
+												setTimeout(() => {
+													emitter.emit('payment:finished');
+												}, 500);
 											});
-									});
-								}
-							});
+										});
+								});
+							}
 						});
-				})
-				.catch(error => {
-					console.log(error);
+					});
 				});
 		}
 

@@ -267,7 +267,6 @@ export default defineComponent({
 
 			send(payload)
 				.then(({ data }) => {
-					console.log(data);
 					dispatch('auth/signIn', data);
 					commit('dialog/closeAll');
 				})

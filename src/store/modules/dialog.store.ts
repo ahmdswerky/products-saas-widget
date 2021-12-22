@@ -34,8 +34,6 @@ export default {
 	},
 	actions: {
 		toggle({ commit, state }) {
-			console.log(state);
-
 			if (!state.opened) {
 				commit('open');
 			} else {

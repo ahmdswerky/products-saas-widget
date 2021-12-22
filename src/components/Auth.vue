@@ -94,7 +94,7 @@
 				<span class="text-gray-400 mx-1">or</span>
 				<span @click="selectMode('signin')" class="text-sky-400 text-sm cursor-pointer select-none">Sign in</span>
 			</h3>-->
-				<Form v-show="open && !loggedIn" class="space-y-4 mt-2" @submit="signin" v-slot="{ errors }">
+				<Form id="auth-form" v-show="open && !loggedIn" class="space-y-4 mt-2" @submit="signin" v-slot="{ errors }">
 					<div v-if="mode === 'signup'" class="px-4">
 						<Field
 							name="name"

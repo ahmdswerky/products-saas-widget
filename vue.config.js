@@ -62,6 +62,9 @@ module.exports = {
 
 	configureWebpack: {
 		// plugins: [new GenerateSW()],
+		// plugins: [babelRemoveAttribute({
+
+		// })],
 		module: {
 			rules: [
 				{

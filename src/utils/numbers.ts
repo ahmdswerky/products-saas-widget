@@ -1,5 +1,5 @@
-export function custom() {
-	return 'custom';
+export function randomBetween(min, max) {
+	return Math.ceil(Math.random() * (max - 2)) + min;
 }
 
 export function currencyFormat(value: number, currency: string) {

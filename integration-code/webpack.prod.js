@@ -60,6 +60,6 @@ module.exports = {
 	],
 	output: {
 		filename: 'integration.js',
-		path: resolve(__dirname, `../dist/versions/${versionNumber}/`),
+		path: resolve(__dirname, `../dist/releases/v${versionNumber}/`),
 	},
 };

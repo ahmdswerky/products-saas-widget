@@ -2743,6 +2743,16 @@ babel-plugin-polyfill-regenerator@^0.3.0:
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.3.0"
 
+babel-plugin-react-remove-properties@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-remove-properties/-/babel-plugin-react-remove-properties-0.3.0.tgz#7b623fb3c424b6efb4edc9b1ae4cc50e7154b87f"
+  integrity sha512-vbxegtXGyVcUkCvayLzftU95vuvpYFV85pRpeMpohMHeEY46Qe0VNWfkVVcCbaZ12CXHzDFOj0esumATcW83ng==
+
+babel-plugin-remove-attribute@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-remove-attribute/-/babel-plugin-remove-attribute-1.0.0.tgz#1d695b6f815b6a6ac79dae0de7c8856a1665665d"
+  integrity sha512-dU+mpUUO9VVjW2izqWV25jaRmOfaZ+Nsgb9q4tH8ST3HmgWctLGSASyYSbWU5vvu24/Gj1Am7RAKT0dOKfr0BA==
+
 babel-plugin-transform-es2015-modules-commonjs@^6.26.0, babel-plugin-transform-es2015-modules-commonjs@^6.26.2:
   version "6.26.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.26.2.tgz#58a793863a9e7ca870bdc5a881117ffac27db6f3"
@@ -11867,6 +11877,11 @@ vue-loader@^15.9.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-remove-attributes@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vue-remove-attributes/-/vue-remove-attributes-1.0.3.tgz#d3e3d951c11f4eaa36d036b31c619dd530019fd3"
+  integrity sha512-fAz9WihMM8UVLn81e/3PCEeLzcifBiy3VNNAK+AEw4NVtapCUX2dZXUpL6zWhLPTxdB0exRiWaKgILx5LUtm+Q==
 
 vue-router@^4.0.0-0:
   version "4.0.12"

@@ -109,7 +109,7 @@
 								'bg-sky-600 hover:bg-sky-700 focus:ring-2 focus:ring-offset-2 focus:ring-sky-500': product.quantity > 0,
 								'bg-gray-400 cursor-default': product.quantity <= 0,
 							}"
-							class="mt-6 w-full border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none"
+							class="purchase-btn mt-6 w-full border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none"
 						>
 							Purchase
 						</button>

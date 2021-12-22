@@ -34,7 +34,13 @@
 				</svg>
 			</div>-->
 
-			<div v-else class="space-y-2" v-for="product in products" :key="product.id">
+			<div
+				:class="{ empty: product.quantity <= 0 }"
+				v-else
+				class="product space-y-2"
+				v-for="product in products"
+				:key="product.id"
+			>
 				<div class="rounded-md relative h-102">
 					<img class="rounded-md w-full h-full object-cover" :src="product.photo?.path" />
 					<div
@@ -109,7 +115,7 @@ m3065 227 c126 -126 227 -231 224 -234 -10 -10 -1632 -899 -1648 -903 -10 -2
 				<h5 class="text-gray-500 text-sm">{{ product.category }}</h5>
 				<RouterLink
 					:to="{ name: 'Show', params: { id: product.slug } }"
-					class="rounded-md bg-gray-100 block hover:bg-gray-200 hover:text-gray-800 text-gray-700 text-center w-full font-semibold py-2"
+					class="purchase-btn rounded-md bg-gray-100 block hover:bg-gray-200 hover:text-gray-800 text-gray-700 text-center w-full font-semibold py-2"
 				>
 					Purchase
 				</RouterLink>

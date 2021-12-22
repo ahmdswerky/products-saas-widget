@@ -1,5 +1,5 @@
 <template>
-	<div class="grid grid-cols-2 gap-4">
+	<div data-test-id="payment-methods-wrapper" id="payment-methods-wrapper" class="grid grid-cols-2 gap-4">
 		<button
 			@click="select('credit_card')"
 			:class="{ 'ring-sky-500 bg-sky-50': selected === 'credit_card', 'ring-gray-300': selected !== 'credit_card' }"

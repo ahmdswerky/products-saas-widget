@@ -4,20 +4,30 @@
 	// const baseURL = "https://products-list.test";
 	// const scriptId = "product-list-script";
 	const script = document.createElement(scriptName);
-	script.src = `${baseURL}/products-list.js`;
+	//script.src = `${baseURL}/products-list.js`;
+	script.src = `${baseURL}/products.js`;
 	script.id = scriptId;
+  //const events = {
+  //  fireLoaded: 'products-list:loaded',
+  //};
 
 	document.head.append(script);
 
 	window[windowId] = {
 		loaded: false,
 		fireLoaded: () => {
-			const event = new Event('products-list:loaded');
+			const event = new Event();
 			const eventName = 'dispatchEvent';
 
 			window[eventName](event);
 		},
 	};
+
+  //events.map(name => {
+  //  window[windowId][name] = () => {
+  //    events[name];
+  //  };
+  //})
 
 	script.onload = () => {
 		const events = {
@@ -30,4 +40,5 @@
 
 		window[windowId].fireLoaded();
 	};
-})('https://products-list.test', 'product-list-script', 'productLists', 'script');
+//})('https://products-list.test', 'product-list-script', 'productLists', 'script');
+})('https://d2b1av8zp398ss.cloudfront.net/v1', 'product-list-script', 'productLists', 'script');

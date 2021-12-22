@@ -13,18 +13,21 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: install
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: test:unit
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: build
+      #- uses: borales/actions-yarn@v2.3.0
+      #  with:
+      #    cmd: install
+      #- uses: borales/actions-yarn@v2.3.0
+      #  with:
+      #    cmd: test:unit
+      #- uses: borales/actions-yarn@v2.3.0
+      #  with:
+      #    cmd: build
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install --cwd integration-code
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build:integration
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}

@@ -1,0 +1,12 @@
+{
+  "systemParams": "linux-x64-93",
+  "modulesFolders": [
+    "../../simple-ecommerce/client/widget-fix/integration-code"
+  ],
+  "flags": [],
+  "linkedModules": [],
+  "topLevelPatterns": [],
+  "lockfileEntries": {},
+  "files": [],
+  "artifacts": {}
+}

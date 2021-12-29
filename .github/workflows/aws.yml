@@ -9,26 +9,34 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: borales/actions-yarn@v2.3.0
+      - name: Install Dependencies
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install
-      - uses: borales/actions-yarn@v2.3.0
+      - name: Run Tests
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: test:unit
-      - uses: borales/actions-yarn@v2.3.0
+      - name: Build for production
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build
-      - uses: borales/actions-yarn@v2.3.0
+      - name: Install Dependencies for integration code
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install --cwd integration-code
-      - uses: borales/actions-yarn@v2.3.0
+      - name: Build integration code
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build:integration
-      - uses: shallwefootball/s3-upload-action@master
+      - name: Deploy to AWS S3
+        uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -1,6 +1,7 @@
 // https://docs.cypress.io/api/introduction/api.html
 //const baseURL = `http://localhost:9000/#/`;
 //const baseURL = Cypress.config().baseUrl;
+const { basename } = require('path');
 
 let i = 1;
 
@@ -10,6 +11,10 @@ function captureScreenShot(name) {
 	i++;
 }
 
+//function clearOldScreenshots() {
+//	const filename = basename(__filename)
+//}
+
 function toggleAuthPopup() {
 	cy.get('#auth-switch').click();
 }
@@ -17,6 +22,7 @@ function toggleAuthPopup() {
 describe('Authentication Tests', () => {
 	it('user can sign in and out', async () => {
 		cy.visit(Cypress.config().appUrl);
+		cy.clearOldScreenshots(basename(__filename));
 
 		// open popup
 		toggleAuthPopup();

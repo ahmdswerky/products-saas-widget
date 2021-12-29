@@ -6,6 +6,7 @@ const versionNumber = pkg.version.split('.')[0];
 
 // module.exports = merge(common, {
 module.exports = {
+  target: 'web',
 	mode: 'production',
 	target: 'web',
 	entry: {
@@ -18,6 +19,25 @@ module.exports = {
 	//		}),
 	//	],
 	// },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              '@babel/preset-env',
+              //[
+              //  //{ "targets": "ie-11" }
+              //],
+            ]
+          }
+        }
+      }
+    ],
+  },
 	plugins: [
 		// new JavaScriptObfuscator({
 		//	// renameGlobals: true,

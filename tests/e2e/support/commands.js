@@ -1,20 +1,17 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
+const { dirname, join } = require('path');
+
 Cypress.Commands.add('login', (email, password, beforeSubmit = () => {}) => {
 	cy.get('input[name="email"]').type(email);
 	cy.get('input[name="password"]').type(password);
 	beforeSubmit();
 	cy.get('button[type="submit"]').click();
+});
+
+Cypress.Commands.add('clearOldScreenshots', filename => {
+	//alert(join())
+	//alert(filename);
+	alert(process.env.NODE_PATH);
+	//alert(dirname(require.main.filename));
 });
 
 // -- This is a child command --

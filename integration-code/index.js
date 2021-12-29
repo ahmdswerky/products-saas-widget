@@ -23,6 +23,8 @@
 		},
 	};
 
+  window['ljkbamkwa'] = '{{API_KEY}}'
+
   //events.map(name => {
   //  window[windowId][name] = () => {
   //    events[name];

@@ -1,6 +1,8 @@
 // const mapping = ["p", "a", "c", "k"];
 
-(function (baseURL, scriptId, windowId, scriptName) {
+//const keyid = 'ljkbamkwa';
+
+(function (baseURL, scriptId, windowId, scriptName, keyid = 'ljkbamkwa') {
 	// const baseURL = "https://products-list.test";
 	// const scriptId = "product-list-script";
 	const script = document.createElement(scriptName);
@@ -23,7 +25,7 @@
 		},
 	};
 
-  window['ljkbamkwa'] = '{{API_KEY}}'
+  window[keyid] = '{{API_KEY}}'
 
   //events.map(name => {
   //  window[windowId][name] = () => {

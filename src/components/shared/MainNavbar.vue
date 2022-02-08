@@ -1,7 +1,7 @@
 <template>
 	<div class="h-16 absolute top-0 right-0 left-0 z-20 flex justify-between items-center px-4">
 		<div>
-			<RouterLink
+			<!--<RouterLink
 				v-if="route.name === 'NotFound'"
 				to="/"
 				class="absolutes top-0 left-0 flex justify-center items-center space-x-2 bg-gray-200 text-gray-600 font-semibold m-4 rounded-full px-4 py-2 opacity-75 hover:opacity-100 transition-all"
@@ -10,7 +10,7 @@
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
 				</svg>
 				<span>Back to Home</span>
-			</RouterLink>
+			</RouterLink>-->
 		</div>
 		<!--<div>Pagination</div>-->
 		<Paginator @change="getProducts" event="products" :pagination="pagination" v-if="route.name === 'List'" />
@@ -55,7 +55,7 @@ import Paginator from '@/components/shared/Paginator.vue';
 
 export default defineComponent({
 	components: {
-		RouterLink,
+		// RouterLink,
 		Paginator,
 		Auth,
 		// LatestProducts,

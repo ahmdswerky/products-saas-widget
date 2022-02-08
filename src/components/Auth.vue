@@ -1,10 +1,11 @@
 <template>
-	<div id="auth-wrapper" class="relative -mt-12" ref="authWrapper">
+	<div data-test="auth-wrapper" id="auth-wrapper" class="relative z-100000 -mt-12" ref="authWrapper">
 		<button
+			data-test="auth-switch"
 			id="auth-switch"
 			@click="toggleOpen"
 			:class="{ 'mx-autos': !open }"
-			class="absolute top-0 right-0 z-50 m-1 w-11"
+			class="absolute z-100000 top-0 right-0 z-50s m-1 w-11"
 		>
 			<img
 				draggable="false"
@@ -17,13 +18,12 @@
 
 		<div
 			:class="{
-				'w-80 rounded-md': open && !expanded,
-				'transition-all w-102 h-semi-screen rounded-md': open && expanded,
+				'w-80 rounded-md': open,
 				'w-0 h-0 p-0 rounded-full': !open,
 				'bg-pink-50': loggedIn,
 				'bg-sky-100': !loggedIn,
 			}"
-			class="absolute bg-whites top-0 right-0 shadow-lg"
+			class="absolute z-10000 w-80 bg-whites top-0 right-0 shadow-lg"
 			ref="authWrapper"
 		>
 			<header class="flex justify-between items-center p-2">
@@ -33,6 +33,7 @@
 							<span>Sign in</span>
 							<span class="text-gray-400 mx-1">or</span>
 							<span
+								data-test="signup-switch"
 								@click="selectMode('signup')"
 								class="text-sky-500 hover:text-sky-600 text-sm cursor-pointer select-none"
 								>Sign up</span
@@ -42,6 +43,7 @@
 							<span>Sign up</span>
 							<span class="text-gray-400 mx-1">or</span>
 							<span
+								data-test="signin-switch"
 								@click="selectMode('signin')"
 								class="text-sky-500 hover:text-sky-600 text-sm cursor-pointer select-none"
 								>Sign in</span
@@ -95,7 +97,7 @@
 				<span @click="selectMode('signin')" class="text-sky-400 text-sm cursor-pointer select-none">Sign in</span>
 			</h3>-->
 				<Form id="auth-form" v-show="open && !loggedIn" class="space-y-4 mt-2" @submit="signin" v-slot="{ errors }">
-					<div v-if="mode === 'signup'" class="px-4">
+					<div data-test="name-error" v-if="mode === 'signup'" class="px-4">
 						<Field
 							name="name"
 							type="name"
@@ -237,14 +239,17 @@ export default defineComponent({
 	},
 
 	setup() {
-		const { getters, commit, dispatch } = useStore();
+		// const { getters, commit, dispatch } = useStore();
+		// const store = useStore();
+		const store = useStore();
 		const authWrapper = ref(null);
-		const open = computed(() => getters['dialog/opened']);
+		const shown = ref(false);
+		const open = computed(() => store.getters['dialog/opened']);
 		const mode = ref('signin');
 		const expanded = ref(false);
 		const loading = ref(false);
-		const loggedIn = computed(() => getters['auth/loggedIn']);
-		const user = computed(() => getters['auth/user']);
+		const loggedIn = computed(() => store.getters['auth/loggedIn']);
+		const user = computed(() => store.getters['auth/user']);
 		const name = ref('');
 		const email = ref('');
 		const password = ref('');
@@ -258,6 +263,7 @@ export default defineComponent({
 		}
 
 		function signin(values, actions) {
+			shown.value = true;
 			loading.value = true;
 			const payload = {
 				name: name.value,
@@ -267,8 +273,8 @@ export default defineComponent({
 
 			send(payload)
 				.then(({ data }) => {
-					dispatch('auth/signIn', data);
-					commit('dialog/closeAll');
+					store.dispatch('auth/signIn', data);
+					store.commit('dialog/closeAll');
 				})
 				.catch(error => {
 					handleErrors(error, errors => actions.setErrors(errors));
@@ -280,8 +286,8 @@ export default defineComponent({
 
 		function toggleOpen() {
 			// opened.value = !opened.value;
-			// commit('dialog/toggle');
-			dispatch('dialog/toggle');
+			// store.commit('dialog/toggle');
+			store.dispatch('dialog/toggle');
 			expanded.value = false;
 		}
 
@@ -294,16 +300,20 @@ export default defineComponent({
 
 		function logout() {
 			// reset();
-			dispatch('auth/signOut');
-			commit('dialog/closeAll');
+			email.value = '';
+			password.value = '';
+
+			store.dispatch('auth/signOut');
+			store.commit('dialog/closeAll');
 		}
 
 		onClickOutside(authWrapper, () => {
-			commit('dialog/closeAll');
+			store.commit('dialog/closeAll');
 			expanded.value = false;
 		});
 
 		return {
+			shown,
 			open,
 			mode,
 			authWrapper,

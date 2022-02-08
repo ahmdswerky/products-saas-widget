@@ -9,6 +9,7 @@
 			<span :class="{ 'text-gray-800': selected === 'credit_card' }" class="text-lg text-gray-600">Credit Card</span>
 		</button>
 		<button
+			id="paypal-switch"
 			@click="select('paypal')"
 			:class="{ 'ring-sky-500 bg-sky-50': selected === 'paypal', 'ring-gray-300': selected !== 'paypal' }"
 			class="p-6 rounded-md ring-2 transition-all flex justify-center items-center flex-col space-y-3"

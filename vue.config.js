@@ -2,9 +2,19 @@
 // const CompressionPlugin = require('compression-webpack-plugin');
 // const zlib = require('zlib');
 const path = require('path');
+const createAttributeRemover = require('vue-remove-attributes');
 const pkg = require('./package.json');
 
 const versionNumber = pkg.version.split('.')[0];
+
+function removeDataTestAttrs(node) {
+	if (node.type === 1 /* NodeTypes.ELEMENT */) {
+		// eslint-disable-next-line no-param-reassign
+		node.props = node.props.filter(prop =>
+			prop.type === 6 /* NodeTypes.ATTRIBUTE */ ? prop.name !== 'data-testid' : true
+		);
+	}
+}
 
 /**
  * @type {import('@vue/cli-service').ProjectOptions}
@@ -20,6 +30,8 @@ module.exports = {
 	//	},
 	// },
 
+	parallel: false,
+
 	chainWebpack: config => {
 		if (process.env.NODE_ENV === 'production') {
 			config.plugins.delete('html');
@@ -28,6 +40,21 @@ module.exports = {
 		}
 
 		config.optimization.delete('splitChunks');
+
+		// if (process.env.NODE_ENV === 'production') {
+		//	config.module
+		//		.rule('vue')
+		//		.use('vue-loader')
+		//		.tap(options => {
+		//			console.log('options', options);
+		//			// eslint-disable-next-line no-param-reassign
+		//			options.compilerOptions = {
+		//				...(options.compilerOptions || {}),
+		//				nodeTransforms: [removeDataTestAttrs],
+		//			};
+		//			return options;
+		//		});
+		// }
 
 		return config;
 	},
@@ -72,6 +99,18 @@ module.exports = {
 					include: /node_modules/,
 					type: 'javascript/auto',
 				},
+
+				// {
+				//	test: /\.vue$/,
+				//	use: {
+				//		loader: 'vue-loader',
+				//		options: {
+				//			compilerOptions: {
+				//				modules: [createAttributeRemover('data-testid')],
+				//			},
+				//		},
+				//	},
+				// },
 
 				// {
 				//	test: /\.(png|jpe?g|gif)$/i,

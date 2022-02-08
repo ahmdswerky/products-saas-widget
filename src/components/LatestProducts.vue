@@ -1,6 +1,6 @@
 <template>
 	<div class="flex px-4 border-t border-pink-100 flex-col space-y-2s mb-3">
-		<div v-if="!loading && !products.length" class="flex flex-col space-y-4 py-8 justify-center items-center">
+		<div v-if="!loading && !products?.length" class="flex flex-col space-y-4 py-8 justify-center items-center">
 			<!--<img class="opacity-70" src="@/assets/images/empty-products.png" />-->
 			<!--<img class="opacity-70" src="@/assets/images/empty-products.png" />-->
 			<Image class="opacity-70" src="empty-products.png" />
@@ -22,7 +22,7 @@
 
 				<Paginator @change="getData" class="no-padding-x" color="text-pink-400" :pagination="pagination" simple sm />
 			</div>
-			<div v-for="{ product } in products" :key="product.id" class="flex items-center justify-between">
+			<div v-for="{ product, usd_amount } in products" :key="product.id" class="flex items-center justify-between">
 				<RouterLink
 					:to="{ name: 'Show', params: { id: product.slug } }"
 					class="flex items-center relative space-x-2 w-2/3"
@@ -34,7 +34,7 @@
 					/>
 					<span :title="product.title" class="text-gray-600 flex-grow block truncate">{{ product.title }}</span>
 				</RouterLink>
-				<span class="text-gray-700">{{ currencyFormat(product.price, 'USD') }}</span>
+				<span class="text-gray-700">{{ currencyFormat(usd_amount, 'USD') }}</span>
 			</div>
 		</div>
 	</div>

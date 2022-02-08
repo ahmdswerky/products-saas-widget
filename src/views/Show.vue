@@ -109,7 +109,7 @@
 								'bg-sky-600 hover:bg-sky-700 focus:ring-2 focus:ring-offset-2 focus:ring-sky-500': product.quantity > 0,
 								'bg-gray-400 cursor-default': product.quantity <= 0,
 							}"
-							class="purchase-btn mt-6 w-full border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none"
+							class="purchase-btn mt-6 w-full border scale-90 border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none"
 						>
 							Purchase
 						</button>
@@ -117,12 +117,12 @@
 
 					<TransitionRoot
 						:show="showPayment"
-						enter="transition-opacity transform duration-500"
-						enter-from="opacity-0 translate-y-20"
-						enter-to="opacity-100 translate-y-0"
-						leave="transition-opacity transform duration-500"
-						leave-from="opacity-100 translate-y-0"
-						leave-to="opacity-0 translate-y-20"
+						enter="transition-all transform duration-500"
+						enter-from="opacity-0 translate-y-20s sscale-90"
+						enter-to="opacity-100 translate-y-0s sscale-100"
+						leave="transition-all transform duration-500"
+						leave-from="opacity-100 translate-y-0s sscale-100"
+						leave-to="opacity-0 translate-y-20s sscale-90"
 					>
 						<PaymentMethods
 							v-if="merchants && Object.keys(merchants)"
@@ -140,7 +140,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, Ref, ref, watch } from 'vue';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute, RouterLink, useRouter } from 'vue-router';
 import { TransitionRoot } from '@headlessui/vue';
 import { useStore } from 'vuex';
 import PaymentMethods from '@/components/payment/PaymentMethods.vue';
@@ -159,6 +159,7 @@ export default defineComponent({
 	},
 
 	setup() {
+		const router = useRouter();
 		const route = useRoute();
 		const params = computed(() => route.params);
 		const { getters, commit } = useStore();
@@ -180,6 +181,11 @@ export default defineComponent({
 					product.value = data.product;
 					data.product.merchant.metas.forEach(meta => {
 						merchants.value[meta.gateway.key] = meta.reference_id;
+					});
+				})
+				.catch(() => {
+					router.replace({
+						name: 'NotFound',
 					});
 				})
 				.finally(() => {

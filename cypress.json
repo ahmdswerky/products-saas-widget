@@ -1,9 +1,12 @@
 {
 	"appUrl": "http://localhost:9000/#/",
 	"screenshotsFolder": "tests/e2e/screenshots",
-  "pluginsFile": "tests/e2e/plugins/index.js",
+	"pluginsFile": "tests/e2e/plugins/index.js",
 	"trashAssetsBeforeRuns": true,
 	"defaultCommandTimeout": 10000,
 	"scrollBehavior": "top",
+	"experimentalComponentTesting": true,
+	"headless": true,
+	"parallel": false,
 	"experimentalNetworkStubbing": true
 }

@@ -6,7 +6,7 @@ import emitter from '@/plugins/emitter';
 const auth = {
 	namespaced: true,
 	state: () => ({
-		dialog: false,
+		dialog: true,
 		loggedIn: false,
 		token: Cookies.get('mjhvhqhbhdo') || null,
 		user: {},

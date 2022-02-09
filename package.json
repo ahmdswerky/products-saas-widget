@@ -10,7 +10,7 @@
 		"serve": "vue-cli-service serve",
 		"build": "vue-cli-service build --mode production",
 		"build:integration": "integration-code/node_modules/webpack-cli/bin/cli.js --config integration-code/webpack.prod.js",
-		"postbuild": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION",
+		"postbuilds": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION",
 		"test:unit": "vue-cli-service test:unit",
 		"test:e2e": "cypress run --env .env.testing",
 		"test:e2e:ui": "cypress open --env .env.testing",

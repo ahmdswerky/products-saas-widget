@@ -1,7 +1,12 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-	purge: ['./src/**/*.html', './src/**/*.vue', './src/**/*.js'],
+	purge: {
+		content: ['./src/**/*.html', './src/**/*.vue', './src/**/*.js'],
+		options: {
+			safelist: [/(grid-cols)-[1-9].?/],
+		},
+	},
 	presets: [],
 	darkMode: false, // or 'media' or 'class'
 	theme: {

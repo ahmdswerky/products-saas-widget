@@ -47,7 +47,7 @@
 							Showing
 							<span id="pagination--showing-results-start" class="font-medium">{{ perPage * (page - 1) + 1 }}</span>
 							to
-							<span id="pagination--showing-results-end" class="font-medium">{{ perPage * page }}</span>
+							<span id="pagination--showing-results-end" class="font-medium">{{ total > 0 ? perPage * page : 1 }}</span>
 							of
 							<span id="pagination--total" class="font-medium">{{ total }}</span>
 							results

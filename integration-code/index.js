@@ -33,16 +33,16 @@
   //  };
   //})
 
-	script.onload = () => {
-		const events = {
-			loaded: true,
-		};
-		// const event = "loaded";
-		//events.map(event => {
-		//	window[windowId][event] = true;
-		//});
+	//script.onload = () => {
+	//	const events = {
+	//		loaded: true,
+	//	};
+	//	// const event = "loaded";
+	//	//events.map(event => {
+	//	//	window[windowId][event] = true;
+	//	//});
 
-		window[windowId].fireLoaded();
-	};
+	//	window[windowId].fireLoaded();
+	//};
 //})('https://products-list.test', 'product-list-script', 'productLists', 'script');
 })('https://d1iigxe1h58tlc.cloudfront.net/v1', 'product-list-script', 'productLists', 'script');

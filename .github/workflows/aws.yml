@@ -1,6 +1,6 @@
 name: Ship to S3
 
-on: 
+on:
   push:
     branches:
       - release
@@ -15,6 +15,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: Copy .env
+        run: cp .env.example || echo 'Already exists.'
       - name: Install Dependencies
         uses: borales/actions-yarn@v2.3.0
         with:

@@ -2,6 +2,10 @@
 // const CompressionPlugin = require('compression-webpack-plugin');
 // const zlib = require('zlib');
 const path = require('path');
+const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const createAttributeRemover = require('vue-remove-attributes');
 const pkg = require('./package.json');
 
@@ -88,6 +92,17 @@ module.exports = {
 	// },
 
 	configureWebpack: {
+		plugins: [
+			new BundleAnalyzerPlugin(),
+			new webpack.DefinePlugin({
+				'process.env': { NODE_ENV: JSON.stringify('production') },
+			}),
+
+			// new UglifyJsPlugin({
+			//	uglifyOptions: { ecma: 5, compress: { keep_fnames: true }, warnings: false, mangle: { keep_fnames: true } },
+			//	parallel: 4,
+			// }),
+		],
 		// plugins: [new GenerateSW()],
 		// plugins: [babelRemoveAttribute({
 
@@ -136,7 +151,18 @@ module.exports = {
 		},
 		optimization: {
 			splitChunks: false,
-			// minimizer: [new UglifyJsPlugin()],
+			minimize: true,
+			minimizer: [
+				new TerserPlugin({
+					test: /\.(js|ts|vue)(\?.*)?$/i,
+				}),
+			],
+			// minimizer: [
+			//	new UglifyJsPlugin({
+			//		uglifyOptions: { ecma: 5, compress: { keep_fnames: true }, warnings: false, mangle: { keep_fnames: true } },
+			//		parallel: 4,
+			//	}),
+			// ],
 		},
 		resolve: {
 			extensions: ['*', '.ts', '.mjs', '.vue', '.json'],

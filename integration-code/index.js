@@ -38,9 +38,9 @@
 			loaded: true,
 		};
 		// const event = "loaded";
-		Object.keys(events).map(event => {
-			window[windowId][event] = events[event];
-		});
+		//events.map(event => {
+		//	window[windowId][event] = true;
+		//});
 
 		window[windowId].fireLoaded();
 	};

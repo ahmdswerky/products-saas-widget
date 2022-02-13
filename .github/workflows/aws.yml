@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '14'
       - name: Copy .env
-        run: cp .env.example || echo 'Already exists.'
+        run: cp .env.example .env || echo 'Already exists.'
       - name: Install Dependencies
         uses: borales/actions-yarn@v2.3.0
         with:

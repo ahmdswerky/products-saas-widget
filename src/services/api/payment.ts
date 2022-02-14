@@ -29,7 +29,6 @@ export function createPayment(data) {
 
 export function updatePayment(id, method, paymentId) {
 	return api.post(`payments/${id}`, {
-		_method: 'PUT',
 		method,
 		payment_id: paymentId,
 	});

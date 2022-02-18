@@ -206,14 +206,17 @@ export default defineComponent({
 											},
 										})
 										.then(() => {
-											updatePayment(payment.id, 'paypal', paymentId).then(res => {
-												paying.value = false;
-												payed.value = true;
+											setTimeout(() => {
+												emitter.emit('payment:finished');
+											}, 500);
+											// updatePayment(payment.id, 'paypal', paymentId).then(res => {
+											//	paying.value = false;
+											//	payed.value = true;
 
-												setTimeout(() => {
-													emitter.emit('payment:finished');
-												}, 500);
-											});
+											//	setTimeout(() => {
+											//		emitter.emit('payment:finished');
+											//	}, 500);
+											// });
 										});
 								});
 							}

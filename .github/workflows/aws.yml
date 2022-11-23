@@ -19,24 +19,24 @@ jobs:
       - name: Copy .env
         run: cp .env.example .env || echo 'Already exists.'
       - name: Install Dependencies
-        uses: borales/actions-yarn@v3.0.0
+        uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
       - name: Run Tests
-        uses: borales/actions-yarn@v3.0.0
+        uses: borales/actions-yarn@v2.0.0
         with:
           cmd: test:unit
       - name: Build for production
-        uses: borales/actions-yarn@v3.0.0
+        uses: borales/actions-yarn@v2.0.0
         with:
           cmd: build
       - run: node -v
       - name: Install Dependencies for integration code
-        uses: borales/actions-yarn@v3.0.0
+        uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install --cwd integration-code
       - name: Build integration code
-        uses: borales/actions-yarn@v3.0.0
+        uses: borales/actions-yarn@v2.0.0
         with:
           cmd: build:integration
       - name: Deploy to AWS S3

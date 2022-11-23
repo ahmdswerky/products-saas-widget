@@ -2,9 +2,6 @@
 	"name": "widget",
 	"version": "1.0.0",
 	"private": true,
-	"engines": {
-		"node": "14.x"
-	},
 	"author": {
 		"name": "Ahmed Swerky",
 		"email": "ahmdswerky@gmail.com"

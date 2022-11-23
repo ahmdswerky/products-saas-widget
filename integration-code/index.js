@@ -45,4 +45,4 @@
 	//	window[windowId].fireLoaded();
 	//};
 //})('https://products-list.test', 'product-list-script', 'productLists', 'script');
-})('https://d1iigxe1h58tlc.cloudfront.net/v1', 'product-list-script', 'productLists', 'script');
+})('https://d2o3zk6c53htz2.cloudfront.net/v1', 'product-list-script', 'productLists', 'script');

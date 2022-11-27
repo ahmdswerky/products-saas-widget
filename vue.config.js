@@ -152,11 +152,11 @@ module.exports = {
 		optimization: {
 			splitChunks: false,
 			minimize: true,
-			minimizer: [
-				new TerserPlugin({
-					test: /\.(js|ts|vue)(\?.*)?$/i,
-				}),
-			],
+			// minimizer: [
+			// 	new TerserPlugin({
+			// 		test: /\.(js|ts|vue)(\?.*)?$/i,
+			// 	}),
+			// ],
 			// minimizer: [
 			//	new UglifyJsPlugin({
 			//		uglifyOptions: { ecma: 5, compress: { keep_fnames: true }, warnings: false, mangle: { keep_fnames: true } },

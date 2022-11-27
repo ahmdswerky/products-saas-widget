@@ -33,6 +33,9 @@
 						</svg>
 						<span>Back to Home</span>
 					</RouterLink>
+					<div v-if="!loading" class="absolute bottom-0 left-0 m-4">
+						<!--<Share />-->
+					</div>
 					<div
 						v-if="loading"
 						style="height: calc(100vh - 10rem)"
@@ -144,6 +147,7 @@ import { useRoute, RouterLink, useRouter } from 'vue-router';
 import { TransitionRoot } from '@headlessui/vue';
 import { useStore } from 'vuex';
 import PaymentMethods from '@/components/payment/PaymentMethods.vue';
+// import Share from '@/components/Share.vue';
 // import MainNavbar from '@/components/shared/MainNavbar.vue';
 import { currencyFormat } from '@/utils';
 import emitter from '@/plugins/emitter';
@@ -153,6 +157,7 @@ import Product from '@/types/product';
 export default defineComponent({
 	components: {
 		// MainNavbar,
+		// Share,
 		RouterLink,
 		TransitionRoot,
 		PaymentMethods,

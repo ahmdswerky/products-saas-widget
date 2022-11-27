@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { computed } from 'vue';
 import axiosRetry from 'axios-retry';
 import store from '@/store';
@@ -9,7 +9,7 @@ const api = axios.create({
 
 axiosRetry(axios, { retries: 3 });
 
-api.interceptors.request.use(config => {
+api.interceptors.request.use((config: AxiosRequestConfig) => {
 	const apiKey = computed(() => store.getters['keys/apiKey']);
 
 	return {

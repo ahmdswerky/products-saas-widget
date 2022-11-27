@@ -7,7 +7,7 @@
 		"email": "ahmdswerky@gmail.com"
 	},
 	"scripts": {
-		"serve": "vue-cli-service serve",
+		"serve": "NODE_OPTIONS=--max_old_space_size=4096 vue-cli-service serve",
 		"build": "vue-cli-service build --mode production",
 		"build:integration": "integration-code/node_modules/webpack-cli/bin/cli.js --config integration-code/webpack.prod.js",
 		"postbuilds": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION",
@@ -32,8 +32,10 @@
 		"babel-eslint": "^10.1.0",
 		"canvas-confetti": "^1.4.0",
 		"core-js": "^3.6.5",
+		"crypto-js": "^4.1.1",
 		"gridsome-helper-json": "^1.0.3",
 		"js-cookie": "^3.0.1",
+		"logrocket": "^2.2.0",
 		"tailwindcss": "npm:@tailwindcss/postcss7-compat",
 		"tiny-emitter": "^2.1.0",
 		"vee-validate": "^4.5.7",

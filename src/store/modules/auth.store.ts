@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import { TinyEmitter } from 'tiny-emitter';
 import { getUser } from '@/services/api/auth';
 import emitter from '@/plugins/emitter';
+import { integrations } from '@/plugins/integrations';
 
 const auth = {
 	namespaced: true,
@@ -19,7 +20,25 @@ const auth = {
 			state.dialog = show;
 		},
 		setUser(state, user) {
+			const w: any = window;
+
 			state.user = user;
+
+			Object.entries(integrations).forEach(([key, value]) => {
+				if (w.enabledIntegrations.includes(key) && value.setUser && typeof value.setUser === 'function') {
+					value.setUser({
+						name: state.user.name,
+						email: state.user.email,
+						createdAt: state.user.created_at,
+					});
+
+					console.log(key, {
+						name: state.user.name,
+						email: state.user.email,
+						createdAt: state.user.created_at,
+					});
+				}
+			});
 		},
 		setLoggedIn(state, loggedIn: boolean) {
 			state.loggedIn = loggedIn;

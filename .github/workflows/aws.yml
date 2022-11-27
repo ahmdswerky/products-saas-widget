@@ -48,7 +48,6 @@ jobs:
       #     cmd: build:integration
       - run: yarn build:integration
         working-directory: .
-      - run: yarn build:integration
       - name: Deploy to AWS S3
         uses: shallwefootball/s3-upload-action@master
         with:
